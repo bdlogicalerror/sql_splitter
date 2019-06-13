@@ -43,7 +43,11 @@ class SqlParser
 
 					preg_match('/(\`[^\`]*\`)/', $line,$token);
 
-					$this->CurrentDBname=str_replace("`", "", $token[0]);
+					if(count($token)>0){
+						$this->CurrentDBname=str_replace("`", "", $token[0]);
+					}
+
+
 
 					if($this->CurrentDB>1){
 						$this->ReadBuffer="";
@@ -81,7 +85,7 @@ class SqlParser
 			}
 			fclose($fhandle);
 
-			echo date('d-m-Y h:i')." File Created: ".$fileName."<br>";
+			echo date('d-m-Y h:i')." >--> ".$fileName."\n";
 
 		}
 
